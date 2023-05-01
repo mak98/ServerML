@@ -1,0 +1,18 @@
+<html>
+<head>
+    <title>Card 1</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/bootstrap.min.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Card 1</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="pt-file">Upload a .pt file</label>
+                <input type="file" class="form-control-file" id="pt-file" name="pt_file" accept=".pt">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

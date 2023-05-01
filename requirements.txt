@@ -1,0 +1,10 @@
+fastapi
+fastapi_session
+python-multipart
+uvicorn
+torch
+numpy
+pandas
+torchvision
+passlib
+mysql-connector-python

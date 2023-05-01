@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="card card-container">
+            <h1 class="text-center">Login</h1>
+            {% if user_agent %}
+            <div class="alert alert-danger" role="alert">
+                {{ user_agent }}
+            </div>
+            {% endif %}
+            <form class="form-signin" action="/login" method="post">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Login</button>
+            </form><!-- /form -->
+            <p class="text-center mt-3 mb-0"><a href="/signup">Don't have an account? Sign up</a></p>
+        </div><!-- /card-container -->
+    </div><!-- /container -->
+
+    <script src="{{ url_for('static', path='/js/bootstrap.min.js') }}"></script>
+</body>
+</html>
