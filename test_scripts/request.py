@@ -1,6 +1,7 @@
 import requests
 
-url = "http://localhost:8000/predict/resnet.pt"
+url = "http://localhost:8000/predict/resnet.pt"#endpoint for model
+#Sample image path
 image_file = open("/home/mayank/ASU/egr598 cav/dataset/val/Toyota Prius/18.jpg", "rb")
 
 # set the file data

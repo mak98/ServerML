@@ -11,14 +11,19 @@ from models import Models
 from passlib.context import CryptContext
 import mysql.connector
 import json
-
+# Create FastAPI instance
 app = FastAPI()
+# Add session middleware with secret key
 app.add_middleware(SessionMiddleware, secret_key="SECRET_KEY")
+# Mount static files directory to "/static"
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 templates = Jinja2Templates(directory="templates")
 security = HTTPBasic()
+# Initialize password context for hashing and verifying passwords
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
+# Connect to MySQL database
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
@@ -26,7 +31,11 @@ mydb = mysql.connector.connect(
     database="serverml"
 )
 mycursor = mydb.cursor()
+
+
+# Initialize model handler for managing machine learning models
 modelHandeler=Models("./static/uploads/")
+
 # Login page route
 @app.get("/")
 def login(request: Request):
@@ -57,7 +66,7 @@ def signup(request: Request):
     return templates.TemplateResponse("signup.html", {"request": request})
 
 
-
+#user registration route
 @app.post("/signup")
 def add_user(request: Request, fname: str = Form(...),lname: str = Form(...),email: str = Form(...), password: str = Form(...),cpassword:str=Form(...)):
     mycursor.execute("SELECT * FROM users WHERE email = %s", (email,))
@@ -73,11 +82,16 @@ def add_user(request: Request, fname: str = Form(...),lname: str = Form(...),ema
     mydb.commit()
     request.session["user"]=email
     return RedirectResponse(url="/dashboard",status_code=303)
+
+# Logout route
 @app.get("/logout")
 def logout(request:Request):
     if "user" in request.session.keys():
+        # remove the "user" key from the session
         request.session.pop("user",None)
         return RedirectResponse(url="/")
+
+# Dashboard route
 @app.get("/dashboard")
 def dashoard(request:Request):
     if "user" not in request.session.keys():
@@ -92,6 +106,7 @@ async def card1(request: Request):
     return templates.TemplateResponse("upload.html", {"request": request})
 @app.post("/upload")
 async def upload_file(pt_file: UploadFile = File(...)):
+    # get the file extension
     file_extension = os.path.splitext(pt_file.filename)[1]
     if file_extension != ".pt":
         return {"error": "Invalid file type. Only .pt files are allowed."}
@@ -99,9 +114,8 @@ async def upload_file(pt_file: UploadFile = File(...)):
     with open(file_path, "wb") as f:
         contents = await pt_file.read()
         f.write(contents)
-    print(file_path)
+    # load the saved model in memory
     modelHandeler.loadModel(pt_file.filename,file_path)
-    print(modelHandeler.getModel())
     return RedirectResponse("/manage",status_code=303)
 
 
@@ -114,6 +128,7 @@ async def card2(request: Request):
     return templates.TemplateResponse("manage.html", {"request": request,"models":models})
 @app.get("/delete/{mname}")
 async def delete_item(request: Request, mname: str):
+    # drop the selected model
     modelHandeler.DropModel(mname)
     return RedirectResponse(url="/manage")
 

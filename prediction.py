@@ -9,7 +9,7 @@ test_transforms = transforms.Compose([
     transforms.Resize(224),
     transforms.ToTensor(),
 ])
-
+#Handeling predictions for resnet-18 model. Can work for other models as long as input required is 224x224 image tensors.
 def predict_image(model, image):
     image_tensor = test_transforms(image).float()
     image_tensor = image_tensor.unsqueeze_(0)
@@ -17,11 +17,5 @@ def predict_image(model, image):
     input = input.to(device)
     output = model(input)
     index = int(output.data.cpu().numpy().argmax())
-    print(9)
     return index,output.data.cpu().tolist()
 
-# model = torch.load('static/uploads/resnet.pt',map_location=device)
-# model.eval()
-
-# img_path = 
-# print(predict_image(model, img_path))
