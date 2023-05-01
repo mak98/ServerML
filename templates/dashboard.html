@@ -1,27 +1,42 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', path='/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>Dashboard</h1>
-        <div class="row">
+        <h1 class="text-center">Dashboard</h1>
+        <div class="row justify-content-center mt-5">
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Card 1</h5>
-                        <p class="card-text">Click here to go to Card 1 page.</p>
-                        <a href="/upload" class="btn btn-primary">Go to Card 1</a>
+                        <h5 class="card-title">Upload Model</h5>
+                        <p class="card-text">This option will take your model file and create an endpoint based on its name</p>
+                        <a href="/upload" class="btn btn-primary">Upload</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Card 2</h5>
-                        <p class="card-text">Click here to go to Card 2 page.</p>
-                        <a href="/manage" class="btn btn-primary">Go to Card 2</a>
+                        <h5 class="card-title">Manage Models</h5>
+                        <p class="card-text">Check what models are currently active and Remove models.</p>
+                        <a href="/manage" class="btn btn-primary">Manage</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Logout</h5>
+                        <p class="card-text">Click here to logout</p>
+                        <a href="/logout" class="btn btn-danger">Logout</a>
                     </div>
                 </div>
             </div>

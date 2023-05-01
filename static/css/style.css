@@ -1,0 +1,83 @@
+body {
+    background-color: #222;
+    color: #fff;
+}
+.card-container {
+    background-color: #333;
+    color: #fff;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    height: 700px;
+    width: 400px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.form-signin {
+    margin-top: 20px;
+}
+.form-group label {
+    color: #fff;
+}
+label {
+    margin-bottom: 5px;
+}
+.form-control {
+    background-color: #444;
+    color: #fff;
+    border: none;
+}
+.btn-primary {
+    background-color: #4CAF50;
+    border: none;
+}
+.btn-primary:hover {
+    background-color: #3e8e41;
+}
+a {
+    color: #4CAF50;
+}
+a:hover {
+    color: #3e8e41;
+}
+input[type="text"],
+input[type="password"] {
+    background-color: #383838;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.btn-signin {
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    padding: 10px;
+    width: 50%;
+}
+
+.btn-signin:hover {
+    background-color: #3e8e41;
+}
+.table {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+.table thead th {
+    color: #333;
+}
+.btn-remove {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+.btn-remove:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}

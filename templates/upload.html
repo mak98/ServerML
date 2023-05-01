@@ -1,18 +1,30 @@
 <html>
 <head>
-    <title>Card 1</title>
+    <title>Upload Model</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', path='/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>Card 1</h1>
-        <form method="POST" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="pt-file">Upload a .pt file</label>
-                <input type="file" class="form-control-file" id="pt-file" name="pt_file" accept=".pt">
+        <div class="row justify-content-center align-items-center vh-100">
+            <div class="col-md-6">
+                <div class="card">
+                    <h1 class="card-header">Upload New Model</h1>
+                    <div class="card-body">
+                        <form method="POST" enctype="multipart/form-data" class="form-inline">
+                            <div class="form-group">
+                                <label for="pt-file">Upload a .pt file (make sure to export entire model and not just state dictionary)</label>
+                                <input type="file" class="form-control-file" id="pt-file" name="pt_file" accept=".pt">
+                                <button type="submit" class="btn btn-primary ml-3">Submit</button>
+                                <a href="/dashboard" class="btn btn-secondary ml-3">Back</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+        </div>
     </div>
+    <script src="{{ url_for('static', path='/js/bootstrap.min.js') }}"></script>
 </body>
 </html>

@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}">
 </head>
 <body>
-    <div class="container">
-        <div class="card card-container">
-            <h1 class="text-center">Sign Up</h1>
+    <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="card card-container" style="max-width: 400px;">
+            <h1 class="text-center mb-4">Sign Up</h1>
             {% if error %}
             <div class="alert alert-danger" role="alert">
                 {{ error }}
@@ -39,7 +39,7 @@
                 </div>
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign Up</button>
             </form>
-            <p class="text-center mt-3 mb-0"><a href="/">Already have an account? Login</a></p>
+            <p class="text-center mt-3 mb-0"><a href="/" class="d-block">Already have an account? Login</a></p>
         </div>
     </div>
     <script src="{{ url_for('static', path='js/bootstrap.min.js') }}"></script>
